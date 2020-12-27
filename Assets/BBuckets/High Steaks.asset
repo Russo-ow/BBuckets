@@ -10,13 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
-  m_Name: Minigame
+  m_Name: High Steaks
   m_EditorClassIdentifier: 
   gameTime: 1
   music: {fileID: 8300000, guid: 7f7d36ecd5a5fd240b51a1feb44fd1bf, type: 3}
   sounds:
-  - soundName: win
-    clip: {fileID: 8300000, guid: 43563de31a65b65409e47bb8f7497adc, type: 3}
+  - soundName: saws
+    clip: {fileID: 8300000, guid: 2fa3dc3e6f8426548bca3a8d369e75c9, type: 3}
+    volume: 0.4
+    minPitch: 1
+    maxPitch: 1
+    source: {fileID: 0}
+  - soundName: squish
+    clip: {fileID: 8300000, guid: 5b947b7b33d803946aa5c83b57cca021, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    source: {fileID: 0}
+  - soundName: moo
+    clip: {fileID: 8300000, guid: e3e419ad25406c640bdeefc7fd9fd077, type: 3}
     volume: 1
     minPitch: 1
     maxPitch: 1
