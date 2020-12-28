@@ -20,8 +20,8 @@ namespace BBuckets {
 
         private void OnTriggerEnter2D(Collider2D other) {
             GameObject cow = other.gameObject;
-            rb.gravityScale = 0;
-            cow.GetComponent<Rigidbody2D>().gravityScale = 1;
+            BBuckets.instance.Lose();
+            Debug.Log("....");
         }
     }
 }

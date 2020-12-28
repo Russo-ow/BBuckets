@@ -4,16 +4,23 @@ using UnityEngine;
 
 namespace BBuckets {
     public class BBuckets : MonoBehaviour {
+        public static BBuckets instance;
 
         private void Start() {
             MinigameManager.Instance.minigame.gameWin = true;
             StartCoroutine(SawsSound());
         }
 
-        private void Lose() {
-            MinigameManager.Instance.minigame.gameWin = false;
-            MinigameManager.Instance.PlaySound("squish");
-            Cow.instance.Death();
+        private void Awake() {
+            instance = this;
+        }
+
+        public void Lose() {
+            if (MinigameManager.Instance.minigame.gameWin) {
+                MinigameManager.Instance.minigame.gameWin = false;
+                MinigameManager.Instance.PlaySound("squish");
+                Cow.instance.Death();
+            }
         }
 
         IEnumerator SawsSound() {
