@@ -10,13 +10,10 @@ namespace BBuckets {
             StartCoroutine(SawsSound());
         }
 
-        private void Update() {
-            if(Input.GetButtonDown("Space")) {
-                if(!MinigameManager.Instance.minigame.gameWin) {
-                    MinigameManager.Instance.minigame.gameWin = true;
-                    MinigameManager.Instance.PlaySound("moo");
-                }
-            }
+        private void Lose() {
+            MinigameManager.Instance.minigame.gameWin = false;
+            MinigameManager.Instance.PlaySound("squish");
+            Cow.instance.Death();
         }
 
         IEnumerator SawsSound() {
