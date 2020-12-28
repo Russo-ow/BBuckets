@@ -9,6 +9,7 @@ namespace BBuckets {
         private void Start() {
             MinigameManager.Instance.minigame.gameWin = true;
             StartCoroutine(SawsSound());
+            StartCoroutine(FinalMoo());
         }
 
         private void Awake() {
@@ -26,6 +27,12 @@ namespace BBuckets {
         IEnumerator SawsSound() {
             yield return new WaitForSeconds(.5f);
             MinigameManager.Instance.PlaySound("saws");
+        }
+
+        IEnumerator FinalMoo() {
+            yield return new WaitForSeconds(6.2f);
+            if(MinigameManager.Instance.minigame.gameWin)
+                MinigameManager.Instance.PlaySound("moo");
         }
     }
 }

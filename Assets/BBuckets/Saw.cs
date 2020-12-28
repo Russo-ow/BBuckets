@@ -6,24 +6,23 @@ namespace BBuckets {
     public class Saw : MonoBehaviour {
         Rigidbody2D rb;
         public float gravity;
+        public GameObject spinner;
         float speed = 0;
 
         void Start() {
             rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = 0;
             StartCoroutine(SawRevving());
+            StartCoroutine(Fall());
         }
 
         void Update() {
-            if (Input.GetButtonDown("Space")) {
-                rb.gravityScale = gravity;
-            }
-            transform.Rotate(Vector3.forward * speed);
+            spinner.transform.Rotate(Vector3.forward * speed);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            GameObject cow = other.gameObject;
-            BBuckets.instance.Lose();
+            if(other.gameObject.name.Equals("Cow"))
+                BBuckets.instance.Lose();
         }
 
         IEnumerator SawRevving() {
@@ -35,6 +34,21 @@ namespace BBuckets {
                 yield return new WaitForEndOfFrame();
             }
             speed = 110;
+        }
+
+        IEnumerator Fall() {
+            yield return new WaitForSeconds(2f);
+            if(transform.position.y == .5)
+                rb.gravityScale = 2 * gravity;
+            yield return new WaitForSeconds(.8f);
+            if(transform.position.y == 1.5)
+                rb.gravityScale = 2 * gravity;
+            yield return new WaitForSeconds(.7f);
+            if(transform.position.y == 2.5)
+                rb.gravityScale = 2*gravity;
+            yield return new WaitForSeconds(.6f);
+            if(transform.position.y == 3.5)
+                rb.gravityScale = 2 * gravity;
         }
     }
 }

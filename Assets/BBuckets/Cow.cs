@@ -18,6 +18,7 @@ namespace BBuckets {
         }
 
         void Start() {
+            MinigameManager.Instance.PlaySound("moo");
             rb = GetComponent<Rigidbody2D>();
             sp = GetComponent<SpriteRenderer>();
         }
